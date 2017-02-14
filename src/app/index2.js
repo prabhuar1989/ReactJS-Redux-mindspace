@@ -2,9 +2,10 @@ import React from "react";
 import {render} from "react-dom";
 
 import {Provider} from "react-redux";
-import {createStore,combineReducers} from "redux";
+import {createStore,combineReducers,applyMiddleware} from "redux";
+import logger from "redux-logger";
 
-import {App} from "./components/App";
+import App from "./components/App";
 
 
 const mathReducer = (state = {result : 0, lastValues : []}, action) => {  //math reducer handles multiple actions
@@ -41,11 +42,26 @@ const userReducer = (state = {name : "Ashwin", age : 27}, action) => {  //userRe
         return state;
 };
 
-const store = createStore(combineReducers({mathReducer,userReducer}));
+const myLogger = (store) => (next) => (action) =>{
+    console.log("Logged Action : ", action);
+    next(action);
+}
+
+const store = createStore(combineReducers({math : mathReducer, user : userReducer}),{},applyMiddleware(logger()));
 
 store.subscribe(() =>{
-    console.log("Store Updated !!",store.getState());
+   // console.log("Store Updated !!",store.getState());
 });
+
+// store.dispatch({
+//     type : "SET_NAME",
+//     payLoad : "Siddhesh"
+// });
+
+// store.dispatch({
+//     type : "ADD",
+//     payLoad : 50
+// });
 
 
 render(
