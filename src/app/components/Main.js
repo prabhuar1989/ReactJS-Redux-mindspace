@@ -10,8 +10,18 @@ export const Main = (props) => {
             </div>
              <div className = "row">
                <div className = "col-xs-10 col-xs-offset-1">
-                  <button className = "btn btn-primary"
-                   onClick = {() => props.changeUsername('Siddhesh')}>Change Username</button>
+                 
+                </div>
+            </div>
+
+            <div className = "row">
+               <div className = "col-xs-10 col-xs-offset-1">
+                 
+                      <label>Name:  
+                        <input type="text" value={props.text} onChange={props.changeText()} />
+                      </label>
+                     
+               
                 </div>
             </div>
         </div>  
@@ -20,5 +30,6 @@ export const Main = (props) => {
 
 
 Main.PropTypes = {
-    changeUsername : React.PropTypes.func
+    changeText : React.PropTypes.func,
+    text : React.PropTypes.string
 }
