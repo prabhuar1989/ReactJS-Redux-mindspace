@@ -1,7 +1,7 @@
 import React from "react";
 
-export class User extends React.Component{
-    render(){
+export const User = (props) =>{
+
         return(
         <div className = "row">
 
@@ -13,13 +13,12 @@ export class User extends React.Component{
 
             <div className = "row">
                <div className = "col-xs-10 col-xs-offset-1">
-                  <p>The username is : {this.props.userName}</p>
+                  <p>The username is : {props.userName}</p>
                 </div>
             </div>
 
         </div>
         );
-    }
 
 }
 

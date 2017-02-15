@@ -2,8 +2,10 @@ import React from "react";
 import {render} from "react-dom";
 import {connect} from "react-redux";
 
-import {Main} from "./Main";
-import {User} from "./User";
+import {Main} from "../components/Main";
+import {User} from "../components/User";
+
+import {setName} from "../actions/userActions";
 
 class App extends React.Component{
    
@@ -28,15 +30,11 @@ const mapStateToProps = (state)=>{
 }
 
 const mapDispatchToProps = (dispatch)=>{
-    return({
+    return{
         setName : (name) => {
-            dispatch({
-                type : "SET_NAME",
-                payload : name
-            });
+            dispatch(setName(name));
         }
-        }
-    );
+        };
 }
 
 export default connect(mapStateToProps , mapDispatchToProps) (App);
