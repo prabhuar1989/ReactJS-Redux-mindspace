@@ -1,8 +1,13 @@
-const formReducer = (state = {text : "Ashwin"}, action) => { 
+const formReducer = (state = {name : "Ashwin" , age : 27}, action) => { 
         switch(action.type){
-            case "CHANGE_TEXT" : state = {
+            case "CHANGE_NAME" : state = {
                 ...state,
-                text : action.payLoad
+                name : action.payLoad
+            }
+            break;
+             case "CHANGE_AGE" : state = {
+                ...state,
+                age : action.payLoad
             }
             break;
         }

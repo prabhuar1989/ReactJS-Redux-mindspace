@@ -6,8 +6,8 @@ import {Main} from "../components/Main";
 import {User} from "../components/User";
 
 import {setName} from "../actions/userActions";
-import {changeText} from "../actions/formActions";
-import {submitForm} from "../actions/formActions";
+import {changeAge} from "../actions/formActions";
+import {changeName} from "../actions/formActions";
 
 class App extends React.Component{
    
@@ -16,10 +16,12 @@ class App extends React.Component{
         return(
             <div className = "container">
                 <Main 
-                changeText = {() => this.props.changeText}
-                text = {this.props.form.text}
+                changeName = {() => this.props.changeName}
+                name = {this.props.form.name}
+                age = {this.props.form.age}
+                changeAge = {() => this.props.changeAge}
                 />
-                <User userName = {this.props.form.text} />
+                <User form = {this.props.form} age = {this.props.form} />
             </div>
         );
     }
@@ -37,11 +39,11 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
     return({
-        setName : (name) => {
-            dispatch(setName(name));
+        changeAge : (event) => {
+            dispatch(changeAge(event.target.value));
         },
-        changeText : (event) => {
-            dispatch(changeText(event.target.value));
+        changeName : (event) => {
+            dispatch(changeName(event.target.value));
         }
         });
 }
